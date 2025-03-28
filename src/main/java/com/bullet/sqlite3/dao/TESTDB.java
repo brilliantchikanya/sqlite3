@@ -38,15 +38,3 @@ public class TESTDB {
     }
 }
 
-/****
-
- .idea/.gitignore
- .idea/encodings.xml
- .idea/misc.xml
- .idea/vcs.xml
- .mvn/wrapper/maven-wrapper.jar
- .mvn/wrapper/maven-wrapper.properties
- mvnw
- mvnw.cmd
-
- */
