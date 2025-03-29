@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <Button fx:id="btn_employee" layoutX="70.0" layoutY="39.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
+    <Button fx:id="btn_payment_details" layoutX="70.0" layoutY="110.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
+    <Button fx:id="btn_logout" layoutX="70.0" layoutY="187.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
+    <Button fx:id="btn_exit" layoutX="70.0" layoutY="273.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
+</AnchorPane>
