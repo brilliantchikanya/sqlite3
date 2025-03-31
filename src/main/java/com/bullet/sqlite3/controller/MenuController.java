@@ -14,6 +14,7 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_employee.setOnAction(event -> System.out.println("Employee clicked"));
 
     }
 }

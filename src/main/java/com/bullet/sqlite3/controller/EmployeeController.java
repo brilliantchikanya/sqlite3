@@ -17,21 +17,35 @@ import java.util.ResourceBundle;
 import static com.bullet.person.Gender.*;
 
 public class EmployeeController implements Initializable {
-    @FXML private ComboBox<Gender> cb_gender;
-    @FXML private TextField tf_employee_number;
-    @FXML private Button btn_add_employee;
+    public ComboBox<Gender> cb_gender;
+    public TextField tf_employee_number;
+    public Button btn_add_employee;
     public Button btn_update_employee;
     public Button btn_delete_employee;
     public Button btn_cancel;
     public TableView<Employee> tbl_employees;
-    @FXML private TextField tf_firstname;
+    public TextField tf_firstname;
     @FXML private TextField tf_lastname;
     ObservableList<Gender> gender = FXCollections.observableArrayList(MALE, FEMALE, UNKNOWN);
     ObservableList<Employee> employees = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cb_gender.setItems(FXCollections.observableList(gender));
+        //cb_gender.setItems(FXCollections.observableList(gender));
+        cb_gender.getItems().addAll(gender);
+        //addListeners();
+        btn_add_employee.setOnAction(event -> System.out.println("bullet"));
+        System.out.println("Starting");
 
     }
+
+//    private void addListeners() {
+//        //btn_add_employee.setOnAction(event -> System.out.println("bullet"));
+//
+//    }
+//
+//    private void onAdd() {
+//        System.out.println("Add button clicked");
+//        tf_firstname.setText("Hie");
+//    }
 }
