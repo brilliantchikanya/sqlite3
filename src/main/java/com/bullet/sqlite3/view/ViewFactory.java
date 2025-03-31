@@ -39,8 +39,9 @@ public class ViewFactory {
             alert.setContentText("Cannot create the window at the moment");
             alert.showAndWait();
         }
-        Stage stage = new Stage(StageStyle.TRANSPARENT);
+        Stage stage = new Stage();
         stage.setTitle("PAYROLL APP");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

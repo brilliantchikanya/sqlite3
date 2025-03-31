@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <Button fx:id="btn_employee" layoutX="70.0" layoutY="39.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
-    <Button fx:id="btn_payment_details" layoutX="70.0" layoutY="110.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
-    <Button fx:id="btn_logout" layoutX="70.0" layoutY="187.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
-    <Button fx:id="btn_exit" layoutX="70.0" layoutY="273.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Button" />
+<AnchorPane prefHeight="600.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox prefHeight="230.0" prefWidth="180.0" style="-fx-alignment: center; -fx-spacing: 10;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <children>
+         <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/logo.png" />
+            </image></ImageView>
+         <Text fill="#052f0b" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: CENTER;" text="PAYROLL">
+            <font>
+               <Font size="24.0" />
+            </font></Text>
+      </children>
+   </VBox>
+    <Button fx:id="btn_employee" layoutX="35.0" layoutY="277.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-cursor: hand;" text="Employee" AnchorPane.topAnchor="277.0" />
+    <Button fx:id="btn_payment_details" layoutX="35.0" layoutY="327.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-cursor: hand;" text="Payment Details" AnchorPane.topAnchor="327.0" />
+    <Button fx:id="btn_logout" layoutX="35.0" layoutY="377.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-cursor: hand;" text="Logout" AnchorPane.topAnchor="377.0" />
+    <Button fx:id="btn_exit" layoutX="35.0" layoutY="432.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-cursor: hand;" text="Exit" AnchorPane.topAnchor="432.0" />
 </AnchorPane>
