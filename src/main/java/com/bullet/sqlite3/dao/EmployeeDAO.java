@@ -1,14 +1,14 @@
 package com.bullet.sqlite3.dao;
 
-import com.bullet.employee.Employee;
+import com.bullet.sqlite3.model.Employee;
 
 import java.util.List;
 
 public interface EmployeeDAO {
     void saveEmployee(Employee employee);
-    Employee getEmployeeById(int employeeId);
+    Employee getEmployeeByEmployeeNumber(String employeeNumber);
     List<Employee> getAllEmployees();
     void updateEmployee(Employee employee);
-    void deleteEmployee(int employeeId);
+    void deleteEmployee(String employeeNumber);
 
 }
