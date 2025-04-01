@@ -113,7 +113,6 @@ public class EmployeeController implements Initializable {
     }
 
     private void onUpdate() {
-        //TODO logic here
         if (selectedTableItem != null) {
         String employeeNumber = tf_employeeNumber.getText();
         String firstname = tf_firstname.getText();
@@ -133,7 +132,6 @@ public class EmployeeController implements Initializable {
     }
 
     private void onAdd() {
-        System.out.println("Add");
         String employeeNumber = tf_employeeNumber.getText();
         String firstname = tf_firstname.getText();
         String lastname = tf_lastname.getText();
