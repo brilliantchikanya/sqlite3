@@ -33,13 +33,15 @@ public class EmployeeController implements Initializable {
     public TableColumn<Employee, String> col_lastname;
     public TableColumn<Employee, String> col_gender;
     ObservableList<Gender> gender = FXCollections.observableArrayList(MALE, FEMALE, UNKNOWN);
-    ObservableList<Employee> employees = FXCollections.observableArrayList(data.getAllEmployees());
+    ObservableList<Employee> employees = FXCollections.observableArrayList();
+    private Employee selectedTableItem;
 
 
     public EmployeeController() {}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // set the table column values
         col_emp_number.setCellValueFactory(employeeNumber ->
                 employeeNumber.getValue().employeeNumberProperty());
         col_firstname.setCellValueFactory(col_firstname ->
@@ -49,13 +51,85 @@ public class EmployeeController implements Initializable {
         col_gender.setCellValueFactory(col_gender ->
                 col_gender.getValue().getPerson().genderProperty().asString());
 
+        // set values for the combo box
         cb_gender.setItems(gender);
+        cb_gender.setPromptText("Gender");
+        // set values for the table
         tbl_employees.setItems(employees);
+        loadEmployees();
+
+        // add button listeners
         addListeners();
+
+        // add selected Employee object listener
+        tbl_employees.getSelectionModel().selectedItemProperty()
+                .addListener((o, old, new_) ->
+                {
+                    selectedTableItem = new_;
+                    if (selectedTableItem != null) {
+                        tf_employeeNumber.setText(selectedTableItem.getEmployeeNumber());
+                        tf_firstname.setText(selectedTableItem.getPerson().getName().getFirstName());
+                        tf_lastname.setText(selectedTableItem.getPerson().getName().getLastName());
+                        cb_gender.setValue(selectedTableItem.getPerson().getGender());
+
+                    }
+                });
+
+    }
+
+    private void loadEmployees() {
+        // first clear the list
+        employees.clear();
+        // then reload the list from the database
+        employees.addAll(data.getAllEmployees());
+
+
+    }
+    private void clearFields() {
+        tf_employeeNumber.clear();
+        tf_firstname.clear();
+        tf_lastname.clear();
+        selectedTableItem = null;
+        cb_gender.setValue(UNKNOWN);
+        tbl_employees.getSelectionModel().clearSelection();
     }
 
     private void addListeners() {
         btn_add_employee.setOnAction(event -> onAdd());
+        btn_update_employee.setOnAction(event -> onUpdate());
+        btn_delete_employee.setOnAction(event -> onDelete());
+        btn_cancel.setOnAction(event -> onClear());
+    }
+
+    private void onDelete() {
+        //TODO logic here
+        if (selectedTableItem != null) {
+            data.deleteEmployee(selectedTableItem.getEmployeeNumber());
+            clearFields();
+            loadEmployees();
+        }
+
+
+    }
+
+    private void onUpdate() {
+        //TODO logic here
+        if (selectedTableItem != null) {
+        String employeeNumber = tf_employeeNumber.getText();
+        String firstname = tf_firstname.getText();
+        String lastname = tf_lastname.getText();
+        Gender gender = cb_gender.getValue();
+        Person person = new Person(firstname, lastname);
+        person.setGender(gender);
+        Employee employee5 = EmployeeFactory.existingEmployee(person, employeeNumber);
+        data.updateEmployee(employee5);
+        clearFields();
+        loadEmployees();
+        }
+    }
+
+    private void onClear() {
+        clearFields();
     }
 
     private void onAdd() {
@@ -67,5 +141,7 @@ public class EmployeeController implements Initializable {
         Employee employee = EmployeeFactory.newEmployee(new Person(firstname, lastname));
         employee.getPerson().setGender(gender);
         data.saveEmployee(employee);
+        clearFields();
+        loadEmployees();
     }
 }

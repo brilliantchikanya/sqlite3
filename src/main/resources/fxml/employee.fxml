@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bullet.sqlite3.controller.EmployeeController">
     <VBox prefHeight="400.0" prefWidth="600.0" style="-fx-spacing: 20;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0">
-      <TextField fx:id="tf_employeeNumber" layoutX="10.0" layoutY="10.0" promptText="Employee Number">
+      <TextField fx:id="tf_employeeNumber" editable="false" layoutX="10.0" layoutY="10.0" promptText="Employee Number">
          <font>
             <Font size="18.0" />
          </font>
@@ -26,7 +26,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <ComboBox fx:id="cb_gender" prefWidth="100.0" promptText="Gender" />
+      <ComboBox fx:id="cb_gender" prefWidth="120.0" promptText="Gender" />
         <AnchorPane prefHeight="200.0" prefWidth="500.0">
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-alignment: center; -fx-spacing: 20;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                 <Button fx:id="btn_add_employee" minHeight="35.0" minWidth="80.0" mnemonicParsing="false" style="-fx-cursor: hand;" text="Add Employee">
