@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.bullet.sqlite3.controller.EmployeeController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bullet.sqlite3.controller.EmployeeController">
     <VBox prefHeight="400.0" prefWidth="600.0" style="-fx-spacing: 20;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="100.0">
       <TextField fx:id="tf_employeeNumber" layoutX="10.0" layoutY="10.0" promptText="Employee Number">
          <font>
@@ -53,10 +52,10 @@
             </HBox>
             <TableView fx:id="tbl_employees" prefHeight="200.0" prefWidth="600.0" AnchorPane.topAnchor="150.0">
                 <columns>
-                    <TableColumn prefWidth="139.0" text="Employee Number" />
-                    <TableColumn prefWidth="194.0" text="First Name" />
-                    <TableColumn prefWidth="188.0" text="Last Name" />
-                    <TableColumn prefWidth="78.0" text="Gender" />
+                    <TableColumn fx:id="col_emp_number" prefWidth="139.0" text="Employee Number" />
+                    <TableColumn fx:id="col_firstname" prefWidth="194.0" text="First Name" />
+                    <TableColumn fx:id="col_lastname" prefWidth="188.0" text="Last Name" />
+                    <TableColumn fx:id="col_gender" prefWidth="78.0" text="Gender" />
                 </columns>
             </TableView>
         </AnchorPane>
