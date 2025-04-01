@@ -5,17 +5,15 @@ import com.bullet.sqlite3.model.Employee;
 import com.bullet.person.Gender;
 import com.bullet.sqlite3.model.EmployeeFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
 
     public EmployeeDAOImpl() {
         String sql = "CREATE TABLE IF NOT EXISTS employees (" +
-                     "employeeNumber TEXT PRIMARY KEY UNIQUE," +
+                     "employeeNumber TEXT PRIMARY KEY COLLATE NOCASE," +
                      "firstname TEXT NOT NULL," +
                      "lastname TEXT NOT NULL," +
                      "employeeGender TEXT" +
@@ -48,6 +46,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         }
         catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
 
 
@@ -79,7 +78,29 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public List<Employee> getAllEmployees() {
-        return List.of();
+        List<Employee> employeeList = new ArrayList<>();
+        String sql = "SELECT * FROM employees";
+
+        try (Connection conn = SQLITEDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String employeeNumber = rs.getString(1);
+                String firstname = rs.getString(2);
+                String lastname = rs.getString(3);
+                String gender = rs.getString(4);
+                Gender employeeGender = Gender.valueOf(gender);
+                Person person = new Person(firstname, lastname);
+                person.setGender(employeeGender);
+                Employee employee = EmployeeFactory.existingEmployee(person, employeeNumber);
+                employeeList.add(employee);
+            }
+
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+        return employeeList;
     }
 
     @Override

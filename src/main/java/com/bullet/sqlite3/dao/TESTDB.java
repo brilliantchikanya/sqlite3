@@ -8,6 +8,7 @@ import static com.bullet.person.Gender.FEMALE;
 import static com.bullet.person.Gender.MALE;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class TESTDB {
     public static void main(String[] args) throws SQLException {
@@ -46,6 +47,22 @@ public class TESTDB {
         if (retrievedEmployee != null) {
             data.updateEmployee(retrievedEmployee);
         }
+        System.out.println("/************   PRINTING OUT EMPLOYEE INFORMATION   ******/");
+        List<Employee> employeeList = data.getAllEmployees();
+        for (Employee employee1: employeeList) {
+            System.out.println("################################################");
+            System.out.println();
+            System.out.println("Employee Number: " + employee1.getEmployeeNumber());
+            System.out.println("First Name:      " + employee1.getPerson().getFirstName());
+            System.out.println("Last Name:       " + employee1.getPerson().getLastName());
+            System.out.println("Gender:          " + employee1.getPerson().getGender().name());
+            System.out.println();
+            System.out.println("################################################");
+        }
+
+
+        System.out.println("/************   END OF EMPLOYEE INFORMATION   ******/");
+
 
 
         // delete the first employee
