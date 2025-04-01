@@ -10,8 +10,7 @@ public class Employee {
 
 
     // create a private constructor since we will be using a factory class
-    Employee(/*long employeeID, */Person person, String employeeNumber) {    // package private
-        //this.employeeID = new SimpleLongProperty(this, "Employee ID", employeeID);    //TODO implement immutability
+    Employee(Person person, String employeeNumber) {    // package private
         this.person = new SimpleObjectProperty<>(this, "Person", person);
         this.employeeNumber = new SimpleStringProperty(this, "Employee Number", employeeNumber);
     }
@@ -35,17 +34,5 @@ public class Employee {
     public void setPerson(Person person) {
         this.person.set(person);
     }
-
-//    public LongProperty employeeIDProperty() {
-//        return this.employeeID;
-//    }
-//    public long getEmployeeID() {
-//        return this.employeeID.get();
-//    }
-
-
-
-
-
 
 }

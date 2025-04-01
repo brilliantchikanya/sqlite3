@@ -6,17 +6,17 @@ public class EmployeeFactory {
     private static long emp_number;
 
 
-    public static Employee newEmployee(/*long employeeID, */Person person) {
+    public static Employee newEmployee(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person must be provided");
         }
         String employeeNumber = generateEmploymentNumber();
-        return new Employee(/*employeeID, */person, employeeNumber);
+        return new Employee(person, employeeNumber);
     }
 
-    public static Employee existingEmployee(/*long employeeID, */Person person, String employeeNumber) {
+    public static Employee existingEmployee(Person person, String employeeNumber) {
         if (person == null || employeeNumber == null || employeeNumber.isEmpty()) throw new IllegalArgumentException("Person and employee number must be provided");
-        return new Employee(/*employeeID, */person, employeeNumber);
+        return new Employee(person, employeeNumber);
 
     }
 
@@ -38,7 +38,6 @@ public class EmployeeFactory {
             return prefix + ++emp_number;
         }
         return prefix + ++emp_number;
-        //return prefix + emp_number;
 
     }
 

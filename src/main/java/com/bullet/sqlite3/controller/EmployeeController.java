@@ -4,7 +4,6 @@ import com.bullet.person.Gender;
 import com.bullet.sqlite3.model.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -25,7 +24,7 @@ public class EmployeeController implements Initializable {
     public Button btn_cancel;
     public TableView<Employee> tbl_employees;
     public TextField tf_firstname;
-    @FXML private TextField tf_lastname;
+    public TextField tf_lastname;
     ObservableList<Gender> gender = FXCollections.observableArrayList(MALE, FEMALE, UNKNOWN);
     ObservableList<Employee> employees = FXCollections.observableArrayList();
 

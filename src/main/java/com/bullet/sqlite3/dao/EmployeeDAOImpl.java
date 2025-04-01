@@ -15,11 +15,9 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     public EmployeeDAOImpl() {
         String sql = "CREATE TABLE IF NOT EXISTS employees (" +
-                     "employeeNumber TEXT UNIQUE," +
-                     "employeeID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                     "employeeNumber TEXT PRIMARY KEY UNIQUE," +
                      "firstname TEXT NOT NULL," +
                      "lastname TEXT NOT NULL," +
-//TODO needs relook                     "employeeNumber TEXT," +
                      "employeeGender TEXT" +
                      ")";
 
@@ -39,21 +37,13 @@ public class EmployeeDAOImpl implements EmployeeDAO{
                      "employeeGender) VALUES (?,?,?,?)";
 
         try (Connection conn = SQLITEDB.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql,
-                                    PreparedStatement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, employee.getEmployeeNumber());
-
             ps.setString(2, employee.getPerson().getFirstName());
             ps.setString(3, employee.getPerson().getLastName());
-            //ps.setString(3, employee.getEmployeeNumber());
             ps.setString(4, employee.getPerson().getGender().name());
             ps.executeUpdate();
-            // Get the generated ID
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                //employee.setEmployeeID(rs.getInt(1));
-            }
 
         }
         catch (Exception e) {
@@ -72,16 +62,13 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                //long employeeID = (long) rs.getInt(1);
-                String firstname = rs.getString(3);
-                String lastname = rs.getString(4);
-//                String employeeNumber = rs.getString(4);
-                String gender = rs.getString(5);
+                String firstname = rs.getString(2);
+                String lastname = rs.getString(3);
+                String gender = rs.getString(4);
                 Gender employeeGender = Gender.valueOf(gender);
                 Person person = new Person(firstname, lastname);
                 Employee employee = EmployeeFactory.existingEmployee(person, employeeNumber);
                 employee.getPerson().setGender(employeeGender);
-                //employee.setEmployeeID(employeeID);
                 return employee;
             }
         } catch (Exception e) {
@@ -105,7 +92,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, employee.getPerson().getFirstName());
             ps.setString(2, employee.getPerson().getLastName());
-            //ps.setString(3, employee.getEmployeeNumber());
             ps.setString(3, employee.getPerson().getGender().name());
             ps.setString(4, employee.getEmployeeNumber());
 
