@@ -1,8 +1,9 @@
 package com.bullet.sqlite3.dao;
 
-import com.bullet.person.Person;
+//import com.bullet.person.Person;
 import com.bullet.sqlite3.model.Employee;
 import com.bullet.sqlite3.model.EmployeeFactory;
+import com.bullet.sqlite3.model.Person;
 
 import static com.bullet.person.Gender.FEMALE;
 import static com.bullet.person.Gender.MALE;
@@ -32,8 +33,8 @@ public class TESTDB {
         if (retrievedEmployee != null) {
 
             //System.out.println("Employee Number: " + retrievedEmployee.getEmployeeNumber());
-            System.out.println("First Name: " + retrievedEmployee.getPerson().getFirstName());
-            System.out.println("Last Name: " + retrievedEmployee.getPerson().getLastName());
+            System.out.println("First Name: " + retrievedEmployee.getPerson().getName().getFirstName());
+            System.out.println("Last Name: " + retrievedEmployee.getPerson().getName().getLastName());
             System.out.println("Gender: " + retrievedEmployee.getPerson().getGender().name());
             //System.out.println("ID: " + retrievedEmployee.getEmployeeID());
         }
@@ -53,8 +54,8 @@ public class TESTDB {
             System.out.println("################################################");
             System.out.println();
             System.out.println("Employee Number: " + employee1.getEmployeeNumber());
-            System.out.println("First Name:      " + employee1.getPerson().getFirstName());
-            System.out.println("Last Name:       " + employee1.getPerson().getLastName());
+            System.out.println("First Name:      " + employee1.getPerson().getName().getFirstName());
+            System.out.println("Last Name:       " + employee1.getPerson().getName().getLastName());
             System.out.println("Gender:          " + employee1.getPerson().getGender().name());
             System.out.println();
             System.out.println("################################################");

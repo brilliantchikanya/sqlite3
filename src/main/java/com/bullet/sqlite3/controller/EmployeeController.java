@@ -1,10 +1,11 @@
 package com.bullet.sqlite3.controller;
 
 import com.bullet.person.Gender;
-import com.bullet.person.Person;
+//import com.bullet.person.Person;
 import com.bullet.sqlite3.dao.EmployeeDAOImpl;
 import com.bullet.sqlite3.model.Employee;
 import com.bullet.sqlite3.model.EmployeeFactory;
+import com.bullet.sqlite3.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -39,8 +40,14 @@ public class EmployeeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //col_emp_number.setCellValueFactory(employeeNumber -> employeeNumber.getValue().employeeNumberProperty());
-        //col_firstname.setCellValueFactory(col_firstname -> col_firstname.getValue().personProperty().asString());
+        col_emp_number.setCellValueFactory(employeeNumber ->
+                employeeNumber.getValue().employeeNumberProperty());
+        col_firstname.setCellValueFactory(col_firstname ->
+                col_firstname.getValue().getPerson().getName().firstNameProperty());
+        col_lastname.setCellValueFactory(col_lastname ->
+                col_lastname.getValue().getPerson().getName().lastNameProperty());
+        col_gender.setCellValueFactory(col_gender ->
+                col_gender.getValue().getPerson().genderProperty().asString());
 
         cb_gender.setItems(gender);
         tbl_employees.setItems(employees);

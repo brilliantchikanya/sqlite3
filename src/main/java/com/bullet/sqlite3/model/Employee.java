@@ -1,6 +1,6 @@
 package com.bullet.sqlite3.model;
 
-import com.bullet.person.Person;
+
 import javafx.beans.property.*;
 
 public class Employee {

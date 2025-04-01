@@ -1,6 +1,6 @@
 package com.bullet.sqlite3.model;
 
-import com.bullet.person.Person;
+
 
 public class EmployeeFactory {
     private static long emp_number;

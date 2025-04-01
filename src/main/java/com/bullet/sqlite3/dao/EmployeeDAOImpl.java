@@ -1,9 +1,10 @@
 package com.bullet.sqlite3.dao;
 
-import com.bullet.person.Person;
+//import com.bullet.person.Person;
 import com.bullet.sqlite3.model.Employee;
 import com.bullet.person.Gender;
 import com.bullet.sqlite3.model.EmployeeFactory;
+import com.bullet.sqlite3.model.Person;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,8 +39,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, employee.getEmployeeNumber());
-            ps.setString(2, employee.getPerson().getFirstName());
-            ps.setString(3, employee.getPerson().getLastName());
+            ps.setString(2, employee.getPerson().getName().getFirstName());
+            ps.setString(3, employee.getPerson().getName().getLastName());
             ps.setString(4, employee.getPerson().getGender().name());
             ps.executeUpdate();
 
@@ -111,8 +112,8 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
         try (Connection conn = SQLITEDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, employee.getPerson().getFirstName());
-            ps.setString(2, employee.getPerson().getLastName());
+            ps.setString(1, employee.getPerson().getName().getFirstName());
+            ps.setString(2, employee.getPerson().getName().getLastName());
             ps.setString(3, employee.getPerson().getGender().name());
             ps.setString(4, employee.getEmployeeNumber());
 
