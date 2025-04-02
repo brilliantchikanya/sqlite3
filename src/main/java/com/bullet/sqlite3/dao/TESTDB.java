@@ -1,10 +1,14 @@
 package com.bullet.sqlite3.dao;
 
 //import com.bullet.person.Person;
+import com.bullet.employee.strategy.HourlySalaryStrategy;
+import com.bullet.person.MyDate;
 import com.bullet.sqlite3.model.Employee;
 import com.bullet.sqlite3.model.EmployeeFactory;
+import com.bullet.sqlite3.model.EmployeePaymentDetails;
 import com.bullet.sqlite3.model.Person;
 
+import static com.bullet.employee.strategy.PaymentType.HOURLY;
 import static com.bullet.person.Gender.FEMALE;
 import static com.bullet.person.Gender.MALE;
 
@@ -21,7 +25,11 @@ public class TESTDB {
         String lastname = "chiks";
         Person person = new Person(firstname, lastname);
         Employee employee = EmployeeFactory.newEmployee(person);
+        //System.out.println(employee);
         employee.getPerson().setGender(MALE);
+        //System.out.println(employee.getEmployeeNumber());
+
+
         //System.out.println(employee.getEmployeeNumber());
 
         // Save an employee in the database
@@ -72,18 +80,20 @@ public class TESTDB {
 
         /************   PAYMENT DETAILS SECTION     *****/
 
-//        EmployeePaymentDetails employeePaymentDetails = new EmployeePaymentDetails(employee);
-//        employeePaymentDetails.setPayrollID(1);
-//        employeePaymentDetails.setPaymentTypeStrategy(new HourlySalaryStrategy());
-//        employeePaymentDetails.setPaymentType(HOURLY);
-//        employeePaymentDetails.setJobTitle("ADMIN");
-//        employeePaymentDetails.setDepartment("DIRECTORS");
-//        employeePaymentDetails.setEmployeeID(employee.getEmployeeID());
-//        employeePaymentDetails.setDateJoined(new MyDate(2020, 11, 15));
-//        employeePaymentDetails.setPayrollDate(new MyDate(2025, 03, 31));
-//        employeePaymentDetails.setGrade(ONE);
-//        employeePaymentDetails.setCurrency(USD);
-//        paymentDetails.saveEmployeePaymentDetails(employeePaymentDetails);
+        EmployeePaymentDetails employeePaymentDetails = new EmployeePaymentDetails();
+        System.out.println(employee.getEmployeeNumber());
+        employeePaymentDetails.setEmployeeNumber(employee.getEmployeeNumber());
+        employeePaymentDetails.setPaymentType(HOURLY);
+        employeePaymentDetails.setPaymentTypeStrategy(new HourlySalaryStrategy());
+        employeePaymentDetails.setJobTitle("ADMIN");
+        employeePaymentDetails.setDepartment("DIRECTORS");
+        employeePaymentDetails.setDateJoined(new MyDate(2020, 11, 15));
+        paymentDetails.saveEmployeePaymentDetails(employeePaymentDetails);
+
+        EmployeePaymentDetails pd = paymentDetails.getEmployeePaymentDetailsByEmployeeNumber(employeePaymentDetails.getEmployeeNumber());
+        System.out.println(pd);
+        List<EmployeePaymentDetails> epdList = paymentDetails.getAllEmployeePaymentDetails();
+        System.out.println(epdList);
 
         /************   END PAYMENT DETAILS SECTION     *****/
     }
