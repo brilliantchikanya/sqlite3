@@ -3,6 +3,7 @@ package com.bullet.sqlite3.controller;
 import com.bullet.sqlite3.model.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,5 +29,15 @@ public class MenuController implements Initializable {
                 Model.getInstance().getViewFactory().setSelectedMenuOption(PAYMENT_DETAILS));
         btn_employee.setOnAction(event ->
                 Model.getInstance().getViewFactory().setSelectedMenuOption(EMPLOYEE));
+        btn_logout.setOnAction(event -> {
+            Stage stage = (Stage) btn_employee.getScene().getWindow();
+            stage.close();
+            Model.getInstance().getViewFactory().showLoginWindow();
+        });
+
+        btn_exit.setOnAction(event -> {
+            Stage stage = (Stage) btn_logout.getScene().getWindow();
+            stage.close();
+        });
     }
 }
