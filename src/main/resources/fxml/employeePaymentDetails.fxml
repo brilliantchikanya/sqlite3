@@ -1,16 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.bullet.sqlite3.controller.EmployeePaymentDetailsController">
-    <Text fill="#e40b0b" layoutX="75.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Payment Details">
+<AnchorPane prefHeight="680.0" prefWidth="800.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bullet.sqlite3.controller.EmployeePaymentDetailsController">
+    <Text fill="#e40b0b" layoutX="75.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Payment Details" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
         <font>
-          <Font size="36.0" />
+          <Font size="18.0" />
         </font>
     </Text>
+   <GridPane prefHeight="385.0" prefWidth="550.0" style="-fx-background-color: #FF0000; -fx-background-radius: 5;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="174.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="273.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="10.0" prefWidth="211.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="114.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <Label prefHeight="18.0" prefWidth="155.0" text="Employee Number" textFill="#f5f0f0">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <TextField fx:id="tf_employee_number" editable="false" GridPane.columnIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="21.0" prefHeight="18.0" prefWidth="155.0" text="Department" textFill="#f5f0f0" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <Label layoutX="10.0" layoutY="63.0" prefHeight="18.0" prefWidth="155.0" text="Job Title" textFill="#f5f0f0" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <Label layoutX="10.0" layoutY="105.0" prefHeight="18.0" prefWidth="155.0" text="Date Joined" textFill="#f5f0f0" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <ComboBox fx:id="cb_payment_type" prefWidth="150.0" promptText="Payment Type" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox fx:id="cb_pay_type_strategy" prefWidth="150.0" promptText="Strategy" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <TextField fx:id="tf_department" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_job_title" layoutX="155.0" layoutY="60.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_hourly_rate" layoutX="155.0" layoutY="102.0" maxWidth="80.0" GridPane.columnIndex="3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_hours_worked" layoutX="155.0" layoutY="18.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_standard_hours" layoutX="445.0" layoutY="60.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_daily_rate" layoutX="445.0" layoutY="102.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_days_worked" layoutX="445.0" layoutY="144.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_standard_days" layoutX="445.0" layoutY="186.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tf_monthly_salary" layoutX="445.0" layoutY="227.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="10.0" layoutY="147.0" prefHeight="18.0" prefWidth="155.0" text="Monthly Salary" textFill="#f5f0f0" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <Label layoutX="10.0" layoutY="21.0" prefHeight="18.0" prefWidth="155.0" text="Hourly rate" textFill="#f5f0f0" GridPane.columnIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <Label layoutX="300.0" layoutY="21.0" prefHeight="18.0" prefWidth="155.0" text="Hours worked" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <Label layoutX="300.0" layoutY="63.0" prefHeight="18.0" prefWidth="155.0" text="Standard hours" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <Label layoutX="300.0" layoutY="105.0" prefHeight="18.0" prefWidth="155.0" text="Daily rate" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <Label layoutX="300.0" layoutY="147.0" prefHeight="18.0" prefWidth="155.0" text="Days worked" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <Label layoutX="300.0" layoutY="189.0" prefHeight="18.0" prefWidth="155.0" text="Standard days" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <padding>
+            <Insets left="45.0" />
+         </padding>
+      </Label>
+      <DatePicker fx:id="dp_date_joined" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   </GridPane>
+   <TableView prefHeight="250.0" prefWidth="680.0" style="-fx-background-radius: 5; -fx-background-color: #00FFFF;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+     <columns>
+       <TableColumn fx:id="col_employee_number" editable="false" prefWidth="135.0" text="employee number" />
+       <TableColumn fx:id="col_firstname" editable="false" prefWidth="163.0" text="first name" />
+         <TableColumn fx:id="col_lastname" editable="false" prefWidth="114.0" text="last name" />
+         <TableColumn fx:id="col_department" editable="false" prefWidth="142.0" text="department" />
+         <TableColumn fx:id="col_payment_type" editable="false" minWidth="0.0" prefWidth="125.0" text="payment type" />
+     </columns>
+   </TableView>
 </AnchorPane>
