@@ -3,8 +3,10 @@ package com.bullet.sqlite3.controller;
 import com.bullet.person.Gender;
 //import com.bullet.person.Person;
 import com.bullet.sqlite3.dao.EmployeeDAOImpl;
+import com.bullet.sqlite3.dao.EmployeePaymentDetailsDAOImpl;
 import com.bullet.sqlite3.model.Employee;
 import com.bullet.sqlite3.model.EmployeeFactory;
+import com.bullet.sqlite3.model.EmployeePaymentDetails;
 import com.bullet.sqlite3.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -139,6 +141,13 @@ public class EmployeeController implements Initializable {
         Employee employee = EmployeeFactory.newEmployee(new Person(firstname, lastname));
         employee.getPerson().setGender(gender);
         data.saveEmployee(employee);
+        //EmployeePaymentDetailsController controller = new EmployeePaymentDetailsController();
+        EmployeePaymentDetailsDAOImpl pd_data = new EmployeePaymentDetailsDAOImpl();
+        EmployeePaymentDetails pd = new EmployeePaymentDetails();
+        pd.setEmployeeNumber(employee.getEmployeeNumber());
+        pd_data.saveEmployeePaymentDetails(pd);
+        //EmployeePaymentDetailsController cont = new EmployeePaymentDetailsController();
+        //cont.loadPaymentDetails();
         clearFields();
         loadEmployees();
     }

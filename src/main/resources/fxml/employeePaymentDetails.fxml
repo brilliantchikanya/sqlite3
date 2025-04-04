@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -77,11 +78,6 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </ComboBox>
-      <ComboBox fx:id="cb_pay_type_strategy" prefWidth="150.0" promptText="Strategy" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin>
-      </ComboBox>
       <TextField fx:id="tf_department" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="18.0" />
@@ -97,27 +93,17 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="tf_hours_worked" layoutX="155.0" layoutY="18.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <TextField fx:id="tf_standard_hours" layoutX="445.0" layoutY="60.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="tf_standard_hours" layoutX="445.0" layoutY="60.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <TextField fx:id="tf_daily_rate" layoutX="445.0" layoutY="102.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="tf_daily_rate" layoutX="445.0" layoutY="102.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="tf_days_worked" layoutX="445.0" layoutY="144.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="tf_standard_days" layoutX="445.0" layoutY="186.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+      <TextField fx:id="tf_standard_days" layoutX="445.0" layoutY="186.0" maxWidth="80.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <font>
             <Font size="18.0" />
          </font>
@@ -143,7 +129,7 @@
             <Insets left="45.0" />
          </padding>
       </Label>
-      <Label layoutX="300.0" layoutY="21.0" prefHeight="18.0" prefWidth="155.0" text="Hours worked" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label layoutX="300.0" layoutY="63.0" prefHeight="18.0" prefWidth="155.0" text="Standard hours" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <font>
             <Font size="14.0" />
          </font>
@@ -151,7 +137,7 @@
             <Insets left="45.0" />
          </padding>
       </Label>
-      <Label layoutX="300.0" layoutY="63.0" prefHeight="18.0" prefWidth="155.0" text="Standard hours" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <Label layoutX="300.0" layoutY="105.0" prefHeight="18.0" prefWidth="155.0" text="Daily rate" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
@@ -159,23 +145,7 @@
             <Insets left="45.0" />
          </padding>
       </Label>
-      <Label layoutX="300.0" layoutY="105.0" prefHeight="18.0" prefWidth="155.0" text="Daily rate" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="3">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <padding>
-            <Insets left="45.0" />
-         </padding>
-      </Label>
-      <Label layoutX="300.0" layoutY="147.0" prefHeight="18.0" prefWidth="155.0" text="Days worked" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="4">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <padding>
-            <Insets left="45.0" />
-         </padding>
-      </Label>
-      <Label layoutX="300.0" layoutY="189.0" prefHeight="18.0" prefWidth="155.0" text="Standard days" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <Label layoutX="300.0" layoutY="189.0" prefHeight="18.0" prefWidth="155.0" text="Standard days" textFill="#f5f0f0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
@@ -184,8 +154,20 @@
          </padding>
       </Label>
       <DatePicker fx:id="dp_date_joined" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="btn_delete" disable="true" mnemonicParsing="false" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #00FF00; -fx-text-fill: #FF0000; -fx-cursor: hand;" text="DELETE" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets left="45.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="btn_add" layoutX="457.0" layoutY="276.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #00FF00; -fx-text-fill: #FF0000; -fx-cursor: hand;" text="ADD" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="45.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="btn_clear" layoutX="457.0" layoutY="276.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #00FF00; -fx-text-fill: #FF0000; -fx-cursor: hand;" text="CLEAR" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <Button fx:id="btn_update" layoutX="457.0" layoutY="276.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="89.0" style="-fx-background-color: #00FF00; -fx-text-fill: #FF0000; -fx-cursor: hand;" text="UPDATE" GridPane.columnIndex="3" GridPane.rowIndex="4" />
    </GridPane>
-   <TableView prefHeight="250.0" prefWidth="680.0" style="-fx-background-radius: 5; -fx-background-color: #00FFFF;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+   <TableView fx:id="tbl_payment_details" prefHeight="250.0" prefWidth="680.0" style="-fx-background-radius: 5; -fx-background-color: #00FFFF;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
      <columns>
        <TableColumn fx:id="col_employee_number" editable="false" prefWidth="135.0" text="employee number" />
        <TableColumn fx:id="col_firstname" editable="false" prefWidth="163.0" text="first name" />

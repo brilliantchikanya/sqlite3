@@ -87,7 +87,7 @@ public class TESTDB {
         employeePaymentDetails.setPaymentTypeStrategy(new HourlySalaryStrategy());
         employeePaymentDetails.setJobTitle("ADMIN");
         employeePaymentDetails.setDepartment("DIRECTORS");
-        employeePaymentDetails.setDateJoined(new MyDate(2020, 11, 15));
+        employeePaymentDetails.setDateJoined(MyDate.create(2020, 11, 15));
         paymentDetails.saveEmployeePaymentDetails(employeePaymentDetails);
 
         EmployeePaymentDetails pd = paymentDetails.getEmployeePaymentDetailsByEmployeeNumber(employeePaymentDetails.getEmployeeNumber());

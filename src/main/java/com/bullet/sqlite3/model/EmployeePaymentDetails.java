@@ -1,32 +1,33 @@
 package com.bullet.sqlite3.model;
 
+import com.bullet.employee.strategy.MonthlySalaryStrategy;
 import com.bullet.employee.strategy.PaymentDetailsInterface;
 import com.bullet.employee.strategy.PaymentType;
 import com.bullet.employee.strategy.PaymentTypeStrategy;
-import com.bullet.person.MyDate;
 import javafx.beans.property.*;
+
+import java.time.LocalDate;
+
+import static com.bullet.employee.strategy.PaymentType.OTHER;
 
 public class EmployeePaymentDetails implements PaymentDetailsInterface {
     //private final ObjectProperty<Employee> employee = new SimpleObjectProperty<>();
     private final StringProperty employeeNumber = new SimpleStringProperty(this, "Employee Number", "");
     private final StringProperty department = new SimpleStringProperty(this, "Department", "");
     private final StringProperty jobTitle = new SimpleStringProperty(this, "Job Title", "");
-    private final ObjectProperty<MyDate> dateJoined = new SimpleObjectProperty<>(this, "Date Joined", null);
-    private final ObjectProperty<PaymentType> paymentType = new SimpleObjectProperty<>(this, "Payment Type", null);
-    private final ObjectProperty<PaymentTypeStrategy> paymentTypeStrategy = new SimpleObjectProperty<>(this, "Payment Type Strategy", null);
+    private final ObjectProperty<LocalDate> dateJoined = new SimpleObjectProperty<>(this, "Date Joined", LocalDate.now()); //default value
+    private final ObjectProperty<PaymentType> paymentType = new SimpleObjectProperty<>(this, "Payment Type", OTHER);
+    private final ObjectProperty<PaymentTypeStrategy> paymentTypeStrategy = new SimpleObjectProperty<>(this, "Payment Type Strategy", new MonthlySalaryStrategy());
+    //TODO work on payment type strategy, should add a binding to payment type variable or something of the sort
 
     private final FloatProperty hourlyRate = new SimpleFloatProperty(this, "Hourly rate", 0);
-    private final FloatProperty hoursWorked = new SimpleFloatProperty(this, "Hours worked", 0);
     private final FloatProperty standardHours = new SimpleFloatProperty(this, "Standard hours", 0);
     private final FloatProperty dailyRate = new SimpleFloatProperty(this, "Daily rate", 0);
-    private final IntegerProperty daysWorked = new SimpleIntegerProperty(this, "Days worked", 0);
     private final IntegerProperty standardDays = new SimpleIntegerProperty(this, "Standard days", 0);
     private final FloatProperty monthlySalary = new SimpleFloatProperty(this, "Monthly salary", 0);
 
 
-    public EmployeePaymentDetails() {
-        //this.employee.set(employee);
-    }
+    public EmployeePaymentDetails() {}
 
     public String getEmployeeNumber() {
         return this.employeeNumber.get();
@@ -63,15 +64,15 @@ public class EmployeePaymentDetails implements PaymentDetailsInterface {
         this.jobTitle.set(jobTitle);
     }
 
-    public MyDate getDateJoined() {
+    public LocalDate getDateJoined() {
         return dateJoined.get();
     }
 
-    public ObjectProperty<MyDate> dateJoinedProperty() {
+    public ObjectProperty<LocalDate> dateJoinedProperty() {
         return dateJoined;
     }
 
-    public void setDateJoined(MyDate dateJoined) {
+    public void setDateJoined(LocalDate dateJoined) {
         this.dateJoined.set(dateJoined);
     }
 
@@ -111,18 +112,6 @@ public class EmployeePaymentDetails implements PaymentDetailsInterface {
         this.hourlyRate.set(hourlyRate);
     }
 
-    public float getHoursWorked() {
-        return hoursWorked.get();
-    }
-
-    public FloatProperty hoursWorkedProperty() {
-        return hoursWorked;
-    }
-
-    public void setHoursWorked(float hoursWorked) {
-        this.hoursWorked.set(hoursWorked);
-    }
-
     public float getStandardHours() {
         return standardHours.get();
     }
@@ -145,18 +134,6 @@ public class EmployeePaymentDetails implements PaymentDetailsInterface {
 
     public void setDailyRate(float dailyRate) {
         this.dailyRate.set(dailyRate);
-    }
-
-    public int getDaysWorked() {
-        return daysWorked.get();
-    }
-
-    public IntegerProperty daysWorkedProperty() {
-        return daysWorked;
-    }
-
-    public void setDaysWorked(int daysWorked) {
-        this.daysWorked.set(daysWorked);
     }
 
     public int getStandardDays() {

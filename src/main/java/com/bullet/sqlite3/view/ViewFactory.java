@@ -92,4 +92,8 @@ public class ViewFactory {
         stage.show();
     }
 
+    public void closeStage(Stage stage) {
+        stage.close();
+    }
+
 }
