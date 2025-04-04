@@ -82,7 +82,7 @@ public class EmployeePaymentDetailsDAOImpl implements EmployeePaymentDetailsDAO 
             ps.setFloat(7, employeePaymentDetails.getStandardHours());
             ps.setFloat(8, employeePaymentDetails.getDailyRate());
             ps.setInt(9, employeePaymentDetails.getStandardDays());
-            ps.setFloat(10, (float) employeePaymentDetails.getMonthlySalary());
+            ps.setFloat(10, employeePaymentDetails.getMonthlySalary());
 
 
             ps.executeUpdate();
@@ -94,8 +94,7 @@ public class EmployeePaymentDetailsDAOImpl implements EmployeePaymentDetailsDAO 
         catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-            //System.out.println("Could not save payment details record for " +
-              //      employeePaymentDetails.getEmployee().getEmployeeFirstName());
+
         }
 
     }
@@ -244,11 +243,11 @@ public class EmployeePaymentDetailsDAOImpl implements EmployeePaymentDetailsDAO 
     private PaymentTypeStrategy createPaymentTypeStrategy(PaymentType paymentType) {
         PaymentTypeStrategy pts = null;
         if (paymentType == MONTHLY) {
-            return new MonthlySalaryStrategy();
+            pts= new MonthlySalaryStrategy();
         } else if (paymentType == HOURLY) {
-            return new HourlySalaryStrategy();
+            pts = new HourlySalaryStrategy();
         } else if (paymentType == DAILY) {
-            return new DailySalaryStrategy();
+            pts = new DailySalaryStrategy();
         }
         return pts;
 

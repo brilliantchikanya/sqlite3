@@ -30,9 +30,10 @@ public class MenuController implements Initializable {
                 Model.getInstance().getViewFactory().setSelectedMenuOption(PAYMENT_DETAILS));
         btn_employee.setOnAction(event ->
                 Model.getInstance().getViewFactory().setSelectedMenuOption(EMPLOYEE));
-        btn_logout.setOnAction(event -> Model.getInstance().getViewFactory().setSelectedMenuOption(MenuOption.LOGOUT));
-
-        btn_exit.setOnAction(event -> {
+        btn_logout.setOnAction(event ->
+                Model.getInstance().getViewFactory().setSelectedMenuOption(MenuOption.LOGOUT));
+        btn_exit.setOnAction(event ->
+        {
             Stage stage = (Stage) btn_logout.getScene().getWindow();
             stage.close();
         });
